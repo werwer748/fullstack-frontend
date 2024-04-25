@@ -5,14 +5,14 @@ import useCustomMove from "../../hooks/useCustomMove";
 const initState = {
     tno: 0,
     title: '',
-    writer: '',
+    content: '',
     dueDate: '',
     complete: false,
 };
 
 function ReadComponent({ tno }: { tno: number }) {
     const [todo, setTodo] = useState(initState);
-    const { moveToList } = useCustomMove();
+    const { moveToList, moveToModify } = useCustomMove();
 
     useEffect(() => {
         getOne(tno).then(data => {
@@ -24,8 +24,8 @@ function ReadComponent({ tno }: { tno: number }) {
     return (
         <div className={"border-2 border-sky-200 mt-10 m-2 p-4"}>
             {makeDiv('Tno', todo.tno)}
-            {makeDiv('Writer', todo.writer)}
             {makeDiv('Title', todo.title)}
+            {makeDiv('Content', todo.content)}
             {makeDiv('Due Date', todo.dueDate)}
             {makeDiv('Complete', todo.complete ? 'Completed' : 'Not Yet')}
 
@@ -36,6 +36,14 @@ function ReadComponent({ tno }: { tno: number }) {
                     onClick={() => moveToList()}
                 >
                     List
+                </button>
+
+                <button
+                    type={"button"}
+                    className={"rounded p-4 m-2 text-xl w-32 text-white bg-red-500"}
+                    onClick={() => moveToModify(todo.tno)}
+                >
+                    Modify
                 </button>
             </div>
         </div>
