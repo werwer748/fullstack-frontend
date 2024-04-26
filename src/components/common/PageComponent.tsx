@@ -1,22 +1,21 @@
 import React from 'react';
-import {ITodoServeData} from "../../interfaces/todoInterface";
+import {IServerData} from "../../interfaces/commonInterface";
 
-interface IPageComponentProp {
-    serverData: ITodoServeData;
+interface IPageComponentProp<T> {
+    serverData: IServerData<T>;
     movePage: ({ page, size }: {page: string, size: string }) => void,
 }
 
-function PageComponent({serverData, movePage}: IPageComponentProp) {
+function PageComponent<T>({serverData, movePage}: IPageComponentProp<T>) {
     return (
         <div className={"m-6 flex justify-center"}>
-            {serverData.prev ?
+            {serverData.prev &&
                 <div
                     className={"m-2 p-2 w-16 text-center font-bold text-blue-400"}
                     onClick={() => movePage({page: serverData.prevPage.toString(), size: '10' })}
                 >
                     Prev
                 </div>
-                : <></>
             }
 
             {serverData.pageNumList.map((pageNum) => (
@@ -30,14 +29,13 @@ function PageComponent({serverData, movePage}: IPageComponentProp) {
                 </div>
             ))}
 
-            {serverData.next ?
+            {serverData.next &&
                 <div
                     className={"m-2 p-2 w-16 text-center font-bold text-blue-400"}
                     onClick={() => movePage({page: serverData.nextPage.toString(), size: '10' })}
                 >
                     Next
                 </div>
-                : <></>
             }
         </div>
     );
