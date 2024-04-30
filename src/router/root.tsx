@@ -2,6 +2,7 @@ import {createBrowserRouter} from "react-router-dom";
 import {lazy, Suspense} from "react";
 import todoRouter from "./todoRouter";
 import productRouter from "./productRouter";
+import memberRouter from "./memberRouter";
 
 const Loading = <div>Loading....</div>;
 const Main = lazy(() => import("../pages/MainPage")); // 코드스플리팅(레이지 로딩)
@@ -9,7 +10,7 @@ const About = lazy(() => import("../pages/AboutPage"));
 
 const TodoIndex = lazy(() => import("../pages/todo/IndexPage"));
 
-const ProductIndex = lazy(() => import("../pages/products/IndexPage"))
+const ProductIndex = lazy(() => import("../pages/products/IndexPage"));
 
 const root = createBrowserRouter([
     {
@@ -29,6 +30,10 @@ const root = createBrowserRouter([
         path: "products",
         element: <Suspense fallback={Loading}><ProductIndex/></Suspense>,
         children: productRouter()
+    },
+    {
+        path: "member",
+        children: memberRouter()
     }
 ])
 

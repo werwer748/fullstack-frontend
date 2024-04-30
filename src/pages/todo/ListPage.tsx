@@ -1,14 +1,13 @@
 import React from 'react';
-import {useSearchParams} from "react-router-dom";
 import ListComponent from "../../components/todo/ListComponent";
 
 function ListPage() {
-    const [queryParams] = useSearchParams();
+    // const [queryParams] = useSearchParams();
 
-    console.log('page 타입확인', typeof queryParams.get('page'))
+    // console.log('page 타입확인', typeof queryParams.get('page'))
 
-    const page = parseInt(queryParams.get('page') || '1', 10);
-    const size = parseInt(queryParams.get('size') || '10', 10);
+    // const page = parseInt(queryParams.get('page') || '1', 10);
+    // const size = parseInt(queryParams.get('size') || '10', 10);
 
     return (
         <div className="p-4 w-full bg-white ">
