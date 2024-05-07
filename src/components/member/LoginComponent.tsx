@@ -1,6 +1,7 @@
 import React, {ChangeEvent, useCallback, useState} from 'react';
 import {ILoginRequest} from "../../interfaces/memberInterface";
 import useCustomLogin from "../../hooks/useCustomLogin";
+import KakaoLoginComponent from "./KakaoLoginComponent";
 
 const initState: ILoginRequest = {
     email: '',
@@ -76,6 +77,7 @@ function LoginComponent() {
                     </div>
                 </div>
             </div>
+            <KakaoLoginComponent />
         </div>
     );
 }
