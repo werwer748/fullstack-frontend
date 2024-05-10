@@ -31,6 +31,7 @@ function ListComponent() {
     useEffect(() => {
         setFetching(true);
         getList({page, size}).then((data) => {
+            console.log("ProductListComponentServerData", data);
             setServerData(data);
             setFetching(false);
         });
